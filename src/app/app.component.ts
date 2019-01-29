@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import * as firebase from 'firebase';
+import { environment } from '../environments/environment';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -18,7 +19,8 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+  this.platform.ready().then(() => {
+      firebase.initializeApp(environment.config);
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
